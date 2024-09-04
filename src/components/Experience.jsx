@@ -1,5 +1,5 @@
 import ExperienceCard from "./ExperienceCard";
-export default function Education() {
+export default function Experience() {
   return (
     <>
       <section
