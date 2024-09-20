@@ -1,5 +1,31 @@
 import ProjectCard from "./ProjectCard";
+import { useEffect } from "react";
+import { usePortfolioContext } from "../../hooks/usePortfolioContext";
+
+
 export default function Project() {
+  const { projects, dispatch } = usePortfolioContext();
+
+  // Fetch projects when the component mounts
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch("/api/user/get-projects");
+        const json = await response.json();
+        console.log("API Response: ",json);
+        if (response.ok) {
+          dispatch({type:'GET_PROJECTS', payload:json}) // Assuming `data` is an array of projects
+          console.log(json);
+        }
+        console.log(json);
+      } catch (error) {
+        console.error("Error Occurred: ", error);
+      }
+    };
+
+    fetchProjects();
+  }, [dispatch]); // Empty dependency array means this runs once on mount
+
   return (
     <>
       <section
@@ -13,10 +39,13 @@ export default function Project() {
         </div>
         <div>
           <ul className="group/list">
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
+            {projects.length > 0 ? (
+              projects.map((project) => (
+                <ProjectCard key={project._id} project={project} />
+              ))
+            ) : (
+              <p>Projects not found</p>
+            )}
           </ul>
         </div>
       </section>

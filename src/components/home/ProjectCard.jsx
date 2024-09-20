@@ -1,4 +1,6 @@
-export default function ProjectCard() {
+import PropTypes from "prop-types";
+export default function ProjectCard(props) {
+  console.log(props.project.name);
   return (
     <>
       <li className="mb-12">
@@ -17,16 +19,12 @@ export default function ProjectCard() {
                   className="group/link inline-flex items-baseline text-base font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
                   href=""
                 >
-                  Build a Spotify Connected App
+                  {props.project.name}
                 </a>
               </div>
             </h1>
             <p className="mt-2 text-sm leading-normal">
-              Build and maintain critical components used to construct
-              Klaviyo&apos;s frontend, across the whole product. Work closely
-              with cross-functional teams, including developers, designers, and
-              product managers, to implement and advocate for best practices in
-              web accessibility.
+              {props.project.description}
             </p>
             <ul className="mt-4 flex flex-row text-xs">
               <li className="mr-1.5 mt-2">
@@ -56,3 +54,7 @@ export default function ProjectCard() {
     </>
   );
 }
+
+ProjectCard.propTypes = {
+  project: PropTypes.object,
+};

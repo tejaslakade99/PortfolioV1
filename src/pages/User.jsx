@@ -1,11 +1,10 @@
-import Login from "../components/user/login"
+import Login from "../components/user/login";
 
 export default function User() {
   return (
-    <div className="h-screen w-screen">
-      <div className="triangle-top-right"> 
-      </div>
+    <div className="-z-10 h-screen w-screen bg-zinc-800">
+      <div className="triangle-top-right -z-0"></div>
       <Login />
     </div>
-  )
+  );
 }

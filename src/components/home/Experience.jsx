@@ -1,5 +1,29 @@
 import ExperienceCard from "./ExperienceCard";
+import { useEffect } from "react";
+import { usePortfolioContext } from "../../hooks/usePortfolioContext";
+
 export default function Experience() {
+  const { experiences, dispatch } = usePortfolioContext();
+
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      try {
+        const response = await fetch("/api/user/get-experiences");
+        const json = await response.json();
+        console.log("API Response Ex: ", json);
+        if (response.ok) {
+          dispatch({ type: "GET_EXPERIENCES", payload: json }); // Assuming `data` is an array of projects
+          console.log(json);
+        }
+        console.log(json);
+      } catch (error) {
+        console.error("Error Occurred: ", error);
+      }
+    };
+
+    fetchExperiences();
+  }, [dispatch]);
+
   return (
     <>
       <section
@@ -13,10 +37,17 @@ export default function Experience() {
         </div>
         <div>
           <ul className="group/list">
+            {experiences.length > 0 ? (
+              experiences.map((experience) => (
+                <ExperienceCard key={experience._id} experience={experience} />
+              ))
+            ) : (
+              <p>No Experiences found</p>
+            )}
+            {/* <ExperienceCard />
             <ExperienceCard />
             <ExperienceCard />
-            <ExperienceCard />
-            <ExperienceCard />
+            <ExperienceCard /> */}
           </ul>
         </div>
       </section>

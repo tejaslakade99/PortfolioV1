@@ -1,9 +1,9 @@
 .triangle-top-right {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   width: 0;
   height: 0;
-  border-top: 100vh solid red; /* Adjust the size relative to viewport width */
+  border-top: 100vh solid #dc2626; /* Adjust the size relative to viewport width */
   border-left: 60vw solid transparent; /* Transparent to create the triangle shape */
 }
