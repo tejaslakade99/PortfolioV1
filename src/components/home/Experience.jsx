@@ -17,7 +17,7 @@ export default function Experience() {
         }
         console.log(json);
       } catch (error) {
-        console.error("Error Occurred: ", error);
+        console.error("Error Occurred in Experience: ", error);
       }
     };
 
