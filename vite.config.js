@@ -12,7 +12,7 @@ export default defineConfig({
         //target: "http://localhost:8000", // Development Backend server URL
         target: "https://portfolio-v1-b.vercel.app", // Development Backend server URL
         changeOrigin: true, // Changes the origin header to the target URL
-        // rewrite: (path) => path.replace(/^\/api/, "/api"), // Rewrite the path if needed
+        rewrite: (path) => path.replace(/^\/api/, "/api"), // Rewrite the path if needed
         // This is used when we want to send a request from the frontend to the backend.
         // For example, if the frontend sends a request to `http://localhost:5173/api/somedoc`,
         // but in the backend the corresponding route is at `http://localhost:8000/somedoc` (without the `/api` prefix),
