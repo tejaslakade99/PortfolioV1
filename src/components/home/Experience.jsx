@@ -8,7 +8,9 @@ export default function Experience() {
   useEffect(() => {
     const fetchExperiences = async () => {
       try {
-        const response = await fetch("/api/user/get-experiences");
+        const response = await fetch(
+          "https://portfolio-v1-b.vercel.app/api/user/get-experiences"
+        );
         const json = await response.json();
         console.log("API Response Ex: ", json);
         if (response.ok) {
