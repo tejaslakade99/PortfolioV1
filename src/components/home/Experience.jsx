@@ -1,7 +1,7 @@
 import ExperienceCard from "./ExperienceCard";
 import { useEffect } from "react";
 import { usePortfolioContext } from "../../hooks/usePortfolioContext";
-const api_url = import.meta.env.VITE_API_URL
+const api_url = import.meta.env.VITE_API_URL;
 
 export default function Experience() {
   const { experiences, dispatch } = usePortfolioContext();
@@ -11,12 +11,10 @@ export default function Experience() {
       try {
         const response = await fetch(`${api_url}/user/get-experiences`);
         const json = await response.json();
-        console.log("API Response Ex: ", json);
+
         if (response.ok) {
           dispatch({ type: "GET_EXPERIENCES", payload: json }); // Assuming `data` is an array of projects
-          console.log(json);
         }
-        console.log(json);
       } catch (error) {
         console.error("Error Occurred in: ", error);
       }

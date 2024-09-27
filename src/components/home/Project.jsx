@@ -10,15 +10,11 @@ export default function Project() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        console.log("hey See api url",api_url);
         const response = await fetch(`${api_url}/user/get-projects`);
         const json = await response.json();
-        console.log("API Response: ", json);
         if (response.ok) {
           dispatch({ type: "GET_PROJECTS", payload: json }); // Assuming `data` is an array of projects
-          console.log(json);
         }
-        console.log(json);
       } catch (error) {
         console.error("Error Occurred: ", error);
       }
