@@ -9,8 +9,7 @@ export default defineConfig({
     proxy: {
       // This is the proxy configuration
       "/api": {
-        //target: "http://localhost:8000", // Development Backend server URL
-        target: "https://portfolio-v1-b.vercel.app", // Development Backend server URL
+        target: "http://localhost:8000", // Development Backend server URL
         changeOrigin: true, // Changes the origin header to the target URL
         rewrite: (path) => path.replace(/^\/api/, "/api"), // Rewrite the path if needed
         // This is used when we want to send a request from the frontend to the backend.

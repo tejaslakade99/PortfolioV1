@@ -1,6 +1,7 @@
 import ProjectCard from "./ProjectCard";
 import { useEffect } from "react";
 import { usePortfolioContext } from "../../hooks/usePortfolioContext";
+const api_url = import.meta.env.VITE_API_URL;
 
 export default function Project() {
   const { projects, dispatch } = usePortfolioContext();
@@ -9,9 +10,7 @@ export default function Project() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch(
-          "https://portfolio-v1-b.vercel.app/api/user/get-projects"
-        );
+        const response = await fetch(`${api_url}/user/get-projects`);
         const json = await response.json();
         console.log("API Response: ", json);
         if (response.ok) {

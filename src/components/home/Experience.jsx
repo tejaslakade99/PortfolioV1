@@ -1,6 +1,7 @@
 import ExperienceCard from "./ExperienceCard";
 import { useEffect } from "react";
 import { usePortfolioContext } from "../../hooks/usePortfolioContext";
+const api_url = import.meta.env.VITE_API_URL
 
 export default function Experience() {
   const { experiences, dispatch } = usePortfolioContext();
@@ -8,9 +9,8 @@ export default function Experience() {
   useEffect(() => {
     const fetchExperiences = async () => {
       try {
-        const response = await fetch(
-          "https://portfolio-v1-b.vercel.app/api/user/get-experiences"
-        );
+        const response = await fetch(`${api_url}/user/get-experiences`);
+        console.log("Heyy See Url is here",api_url);
         const json = await response.json();
         console.log("API Response Ex: ", json);
         if (response.ok) {
