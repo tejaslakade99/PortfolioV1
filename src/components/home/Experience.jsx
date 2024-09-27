@@ -10,7 +10,6 @@ export default function Experience() {
     const fetchExperiences = async () => {
       try {
         const response = await fetch(`${api_url}/user/get-experiences`);
-        console.log("Heyy See Url is here",api_url);
         const json = await response.json();
         console.log("API Response Ex: ", json);
         if (response.ok) {

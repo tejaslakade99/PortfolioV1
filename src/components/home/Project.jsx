@@ -10,6 +10,7 @@ export default function Project() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
+        console.log("hey See api url",api_url);
         const response = await fetch(`${api_url}/user/get-projects`);
         const json = await response.json();
         console.log("API Response: ", json);
