@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 export default function ExperienceCard(props) {
-  console.log("Experience Props : ", props);
   const fromDate = new Date(props.experience.duration.from);
   const toDate = new Date(props.experience.duration.to);
   const fromYear = fromDate.getFullYear();
